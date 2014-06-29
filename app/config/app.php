@@ -108,6 +108,7 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Rtoya\Account\AccountServiceProvider',
+        'Rtoya\Dashboard\DashboardServiceProvider',
         'Rtoya\Signin\SigninServiceProvider',
     ),
 
