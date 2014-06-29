@@ -15,3 +15,7 @@ Route::get('/', function()
 {
     return Redirect::route('signin');
 });
+
+Route::get('/my-arts', array('as' => 'my-arts', function() {
+    return 'my-arts';
+}));
