@@ -15,6 +15,14 @@
             </div>
         </div>
 
+        @if (Auth::check())
+        <div class="row">
+            <div class="large-12 columns">
+            @include('layouts.navigation-main')
+            </div>
+        </div>
+        @endif
+
         @yield('content')
 
         <script src="js/vendor/jquery.js"></script>
