@@ -13,5 +13,15 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+    return View::make('home');
 });
+
+Route::post('/signin', array('as' => 'signin.post', function()
+{
+    return 'here we are, posting';
+}));
+
+Route::get('/forgot-password', array('as' => 'forgotpassword', function()
+{
+    return 'forgot password';
+}));
