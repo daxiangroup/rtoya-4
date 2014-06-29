@@ -19,6 +19,7 @@ class AccountServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('rtoya/account');
+		include(__DIR__.'/../../routes.php');
 	}
 
 	/**
