@@ -15,11 +15,11 @@
             </div>
             <div class="row">
                 <div class="columns large-6">
-                    {{ Form::button('Go', array('class' => 'button tiny radius')) }}
+                    {{ Form::submit('Go', array('class' => 'button tiny radius')) }}
                 </div>
                 <div class="columns large-6">
                     {{ Form::checkbox('remember', '1', false, array('id' => 'frm-remember-me')) }}
-                    {{ Form::label('frm-remember-me', 'Remember me')}} - {{ HTML::linkRoute('forgotpassword', 'Forgot Password') }}
+                    {{ Form::label('frm-remember-me', 'Remember me')}} - {{ HTML::linkRoute('signin.forgotpassword', 'Forgot Password') }}
                 </div>
             </div>
             {{ Form::close() }}
