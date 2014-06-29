@@ -13,5 +13,5 @@
 
 Route::get('/', function()
 {
-    return View::make('home');
+    return Redirect::route('signin');
 });
