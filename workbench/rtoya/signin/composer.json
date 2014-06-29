@@ -1,0 +1,23 @@
+{
+    "name": "rtoya/signin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rtoya",
+            "email": "dev@rtoya.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Rtoya\\Signin\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
