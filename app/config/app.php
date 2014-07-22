@@ -109,6 +109,7 @@ return array(
 
         'Rtoya\Account\AccountServiceProvider',
         'Rtoya\Art\ArtServiceProvider',
+        'Rtoya\Base\BaseServiceProvider',
         'Rtoya\Dashboard\DashboardServiceProvider',
         'Rtoya\Signin\SigninServiceProvider',
     ),
@@ -177,6 +178,11 @@ return array(
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
 
+        'AccountService'  => 'Rtoya\Account\Service\AccountService',
+        'Art'             => 'Rtoya\Art\Model\Art',
+        'ArtPhoto'        => 'Rtoya\Art\Model\ArtPhoto',
+        'ArtService'      => 'Rtoya\Art\Service\ArtService',
+        'UserService'     => 'Rtoya\Base\Service\UserService',
     ),
 
 );
