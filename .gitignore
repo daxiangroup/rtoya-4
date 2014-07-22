@@ -7,3 +7,10 @@ composer.lock
 .DS_Store
 Thumbs.db
 *.codekit
+
+# Packages
+workbench/rtoya/account
+workbench/rtoya/art
+workbench/rtoya/base
+workbench/rtoya/dashboard
+workbench/rtoya/signin
