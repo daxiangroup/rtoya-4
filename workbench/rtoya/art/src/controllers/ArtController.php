@@ -9,14 +9,17 @@ use Rtoya\Art\Service\ArtService;
 
 class ArtController extends BaseController {
 
-    public function __construct(ArtService $service)
+    public function __construct(ArtService $artService)
     {
-        $this->service = $service;
+        $this->artService = $artService;
     }
 
     public function getIndex()
     {
-        $featuredArts = $this->service->retrieveFeaturedArts();
+        $featuredArts = $this->artService
+            ->retrieveFeaturedArts();
+echo '<pre>';
+dd($featuredArts);
 
         return View::make('art::index')
             ->with('featuredArts', $featuredArts);
@@ -24,8 +27,10 @@ class ArtController extends BaseController {
 
     public function getArtsById($id)
     {
-        $arts = $this->service->retrieveArtsByUserId($id);
-        $user = $this->service->retrieveUserById($id);
+        $arts = $this->artService
+            ->retrieveArtsByUserId($id);
+        $user = $this->artService
+            ->retrieveUserById($id);
 
         return View::make('art::artist')
             ->with('artist', $user)
@@ -34,7 +39,8 @@ class ArtController extends BaseController {
 
     public function getArtsByName($name)
     {
-        $user = $this->service->retrieveUserByName($name);
+        $user = $this->artService
+            ->retrieveUserByName($name);
 
         if (count($user) === 0) {
             return View::make('art::unknown-artist')
@@ -46,8 +52,10 @@ class ArtController extends BaseController {
 
     public function getArtByid($name, $id)
     {
-        $user = $this->service->retrieveUserByName($name);
-        $art  = $this->service->retrieveArtById($id);
+        $user = $this->artService
+            ->retrieveUserByName($name);
+        $art  = $this->artService
+            ->retrieveArtById($id);
 
         if (count($user) === 0) {
             return View::make('art::unknown-artist')
