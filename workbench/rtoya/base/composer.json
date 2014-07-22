@@ -1,0 +1,23 @@
+{
+    "name": "rtoya/base",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rtoya",
+            "email": "dev@rtoya.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Rtoya/Base/Service"
+        ],
+        "psr-0": {
+            "Rtoya\\Base": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
