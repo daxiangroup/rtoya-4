@@ -182,6 +182,8 @@ return array(
         'Art'             => 'Rtoya\Art\Model\Art',
         'ArtPhoto'        => 'Rtoya\Art\Model\ArtPhoto',
         'ArtService'      => 'Rtoya\Art\Service\ArtService',
+        'Gallery'         => 'Rtoya\Art\Model\Gallery',
+        'GalleryArt'      => 'Rtoya\Art\Model\GalleryArt',
         'UserService'     => 'Rtoya\Base\Service\UserService',
     ),
 
