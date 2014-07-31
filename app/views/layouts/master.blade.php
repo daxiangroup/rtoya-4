@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>rtoya</title>
         {{ HTML::style('css/foundation.css') }}
+        {{ HTML::style('css/rtoya.css') }}
         {{ HTML::script('js/vendor/modernizr.js') }}
     </head>
     <body>
@@ -15,13 +16,11 @@
             </div>
         </div>
 
-        @if (Auth::check())
         <div class="row">
             <div class="large-12 columns">
             @include('layouts.navigation-main')
             </div>
         </div>
-        @endif
 
         @yield('content')
 
