@@ -78,3 +78,8 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('isSelf', function()
+{
+    if (Route::input('id') != Auth::user()->id) return Redirect::to('/');
+});
