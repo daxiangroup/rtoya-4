@@ -1,6 +1,6 @@
 <?php
 
-function slugify($input, $trimShortWords = true)
+function slugify($input, $trimShortWords = true, $toLower = true)
 {
     $shortWords = array(
         'to', 'the', 'and',
@@ -16,5 +16,7 @@ function slugify($input, $trimShortWords = true)
         $input = str_replace('--', '-', $input);
     }
 
-    return trim(strtolower($input), '-');
+    $input = $toLower === true ? strtolower($input) : $input;
+
+    return trim($input, '-');
 }
