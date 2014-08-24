@@ -33,6 +33,26 @@ class ArtistController extends BaseController {
     //         ->with('featuredGalleries', $featuredGalleries);
     // }
 
+    // Route:: /artist/featured
+    public function getFeaturedArtist()
+    {
+        $featuredArtists = $this->artistService
+            ->retrieveFeaturedArtists($this->userService);
+
+        return View::make('art::art-featured-artist')
+            ->with('featuredArtists', $featuredArtists);
+    }
+
+    // Route:: /artist/featured/galleries
+    public function getFeaturedGalleries()
+    {
+        $featuredGalleries = $this->artService
+            ->retrieveFeaturedGalleries();
+
+        return View::make('art::art-featured-gallery')
+            ->with('featuredGalleries', $featuredGalleries);
+    }
+
     // Route: /artist/{artistName}
     public function getArtistByArtistName($userName)
     {
@@ -46,6 +66,7 @@ class ArtistController extends BaseController {
             ->with('user', $user);
     }
 
+    // Route /artist/{userName}/galleries
     public function getArtistGalleriesByArtistName($userName)
     {
         $user = $this->userService
@@ -72,7 +93,7 @@ class ArtistController extends BaseController {
         }
 
         $gallery = $this->artistService
-            ->retrieveGalleryByNameSlug($galleryName);
+            ->retrieveGalleryByNameSlug($user->id, $galleryName);
         if (empty($gallery) === true) {
             return Redirect::route('artist.galleryNotFound', $userName, $galleryName);
         }
@@ -96,103 +117,4 @@ class ArtistController extends BaseController {
             ->with('userName', $userName);
     }
 
-
-    // // Route: /art/{id}/{empty?}
-    // public function getArtByArtistName($id)
-    // {
-    //     $art  = $this->artService
-    //         ->retrieveArtById($id);
-
-    //     if (count($art) === 0) {
-    //         return View::make('art::unknown-art')
-    //             ->with('id', $id);
-    //     }
-
-    //     $user = $this->userService
-    //         ->retrieveUserById($art->user->id);
-
-    //     return View::make('art::art-display')
-    //         ->with('artist', $user)
-    //         ->with('art', $art);
-    // }
-
-    // // Route: /art/{name}/{id}/{empty?}
-    // public function getArtByUserId($name, $id)
-    // {
-    //     $user = $this->userService
-    //         ->retrieveUserByName($name);
-    //     $art  = $this->artService
-    //         ->retrieveArtById($id);
-
-    //     if (count($user) === 0) {
-    //         return View::make('art::unknown-artist')
-    //             ->with('artist', $name);
-    //     }
-
-    //     if (count($art) === 0) {
-    //         return View::make('art::unknown-art')
-    //             ->with('artist', $user)
-    //             ->with('id', $id);
-    //     }
-
-    //     return View::make('art::art-display')
-    //         ->with('artist', $user)
-    //         ->with('art', $art);
-    // }
-
-    // // Route: /art/gallery/{user_id}/{name?}
-    // public function getGalleriesByUserId($user_id)
-    // {
-    //     $user      = $this->userService
-    //         ->retrieveUserById($user_id);
-    //     $galleries = $this->artService
-    //         ->retrieveGalleriesById($user->id);
-
-    //     return View::make('art::artist-galleries')
-    //         ->with('artist', $user)
-    //         ->with('galleries', $galleries);
-    // }
-
-    // // Route: /art/{name}/gallery
-    // public function getGalleriesByName($name)
-    // {
-    //     $user      = $this->userService
-    //         ->retrieveUserByName($name);
-    //     $galleries = $this->artService
-    //         ->retrieveGalleriesById($user->id);
-
-    //     return View::make('art::artist-galleries')
-    //         ->with('user', $user)
-    //         ->with('galleries', $galleries);
-    // }
-
-    // // Route:: /art/featured
-    // public function getFeaturedArt()
-    // {
-    //     $featuredArts    = $this->artService
-    //         ->retrieveFeaturedArts();
-
-    //     return View::make('art::art-featured-art')
-    //         ->with('featuredArts', $featuredArts);
-    // }
-
-    // // Route:: /artist/featured
-    // public function getFeaturedArtist()
-    // {
-    //     $featuredArtists = $this->artService
-    //         ->retrieveFeaturedArtists($this->userService);
-
-    //     return View::make('art::art-featured-artist')
-    //         ->with('featuredArtists', $featuredArtists);
-    // }
-
-    // // Route:: /art/gallery/featured
-    // public function getFeaturedGallery()
-    // {
-    //     $featuredGalleries = $this->artService
-    //         ->retrieveFeaturedGalleries();
-
-    //     return View::make('art::art-featured-gallery')
-    //         ->with('featuredGalleries', $featuredGalleries);
-    // }
 }

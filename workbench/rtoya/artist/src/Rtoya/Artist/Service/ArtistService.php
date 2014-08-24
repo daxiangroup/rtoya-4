@@ -87,9 +87,10 @@ class ArtistService
             ->get();
     }
 
-    public function retrieveGalleryByNameSlug($galleryName)
+    public function retrieveGalleryByNameSlug($userId, $galleryName)
     {
         return Gallery::where('name_slug', '=', $galleryName)
-            ->get();
+            ->where('user_id', '=', $userId)
+            ->first();
     }
 }
