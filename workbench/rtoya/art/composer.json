@@ -1,0 +1,26 @@
+{
+    "name": "rtoya/art",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rtoya",
+            "email": "dev@rtoya.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers",
+            "src/models",
+            "src/Rtoya/Art/Service"
+        ],
+        "psr-0": {
+            "Rtoya\\Art": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

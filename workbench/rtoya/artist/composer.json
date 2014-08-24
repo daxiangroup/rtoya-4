@@ -1,0 +1,25 @@
+{
+    "name": "rtoya/artist",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rtoya",
+            "email": "dev@rtoya.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers",
+            "src/Rtoya/Artist/Service"
+        ],
+        "psr-0": {
+            "Rtoya\\Artist\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

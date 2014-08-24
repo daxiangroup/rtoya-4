@@ -109,6 +109,7 @@ return array(
 
         'Rtoya\Account\AccountServiceProvider',
         'Rtoya\Art\ArtServiceProvider',
+        'Rtoya\Artist\ArtistServiceProvider',
         'Rtoya\Base\BaseServiceProvider',
         'Rtoya\Dashboard\DashboardServiceProvider',
         'Rtoya\Signin\SigninServiceProvider',
@@ -182,9 +183,33 @@ return array(
         'Art'             => 'Rtoya\Art\Model\Art',
         'ArtPhoto'        => 'Rtoya\Art\Model\ArtPhoto',
         'ArtService'      => 'Rtoya\Art\Service\ArtService',
+        'ArtistService'   => 'Rtoya\Artist\Service\ArtistService',
         'Gallery'         => 'Rtoya\Art\Model\Gallery',
         'GalleryArt'      => 'Rtoya\Art\Model\GalleryArt',
         'UserService'     => 'Rtoya\Base\Service\UserService',
+    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Package Definitions
+    |--------------------------------------------------------------------------
+    |
+    | This array of packages makes it easier for route migration. We're at a
+    | point where the routing might move around and this will make it much
+    | easier. Also, it reduces the amount of repeated text in the package's
+    | routes.php.
+    |
+    */
+
+    'packages' => array(
+        'art' => array(
+            'prefix'     => 'art',
+            'controller' => 'Rtoya\Artist\ArtController',
+        ),
+        'artist' => array(
+            'prefix'     => 'artist',
+            'controller' => 'Rtoya\Artist\ArtistController',
+        ),
     ),
 
 );
