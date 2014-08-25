@@ -3,9 +3,14 @@
 $routePrefix = '/'.Config::get('app.packages.artist.prefix');
 $controller  = Config::get('app.packages.artist.controller').'@';
 
+Route::get($routePrefix, array(
+    'as'   => 'artist.index', function() {
+        return Redirect::route('artist.featuredArtists');
+    }));
+
 Route::get($routePrefix.'/featured', array(
-    'uses' => $controller.'getFeaturedArtist',
-    'as'   => 'artist.featuredArtist'));
+    'uses' => $controller.'getFeaturedArtists',
+    'as'   => 'artist.featuredArtists'));
 
 Route::get($routePrefix.'/featured/galleries', array(
     'uses' => $controller.'getFeaturedGalleries',
@@ -30,3 +35,10 @@ Route::get($routePrefix.'/{userName}/gallery/{galleryName}', array(
 Route::get($routePrefix.'/{userName}/not-found', array(
     'uses' => $controller.'getArtistNotFound',
     'as'   => 'artist.notFound'));
+
+// Catch-All Route
+
+Route::any($routePrefix.'/{path?}', array(
+    'uses' => $controller.'getCatchAll',
+    'as'   => 'artist.catchAll'))
+    ->where('path', '.+');

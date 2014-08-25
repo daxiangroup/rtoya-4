@@ -7,14 +7,16 @@ use \User;
 use \View;
 
 use Redirect;
+use Rtoya\Art\Service\ArtService;
 use Rtoya\Artist\Service\ArtistService;
 use Rtoya\Base\Service\UserService;
 
 class ArtistController extends BaseController {
 
-    public function __construct(ArtistService $artistService, UserService $userService)
+    public function __construct(ArtistService $artistService, ArtService $artService, UserService $userService)
     {
         $this->artistService = $artistService;
+        $this->artService    = $artService;
         $this->userService   = $userService;
     }
 
@@ -33,8 +35,14 @@ class ArtistController extends BaseController {
     //         ->with('featuredGalleries', $featuredGalleries);
     // }
 
-    // Route:: /artist/featured
-    public function getFeaturedArtist()
+    /**
+     * A page displaying all of the featured artists
+     *
+     * @method get
+     * @route  /artist/featured
+     * @return View
+     */
+    public function getFeaturedArtists()
     {
         $featuredArtists = $this->artistService
             ->retrieveFeaturedArtists($this->userService);
@@ -43,7 +51,13 @@ class ArtistController extends BaseController {
             ->with('featuredArtists', $featuredArtists);
     }
 
-    // Route:: /artist/featured/galleries
+    /**
+     * A page displaying all of the featured galleries
+     *
+     * @method get
+     * @route  /artist/featured/galleries
+     * @return View
+     */
     public function getFeaturedGalleries()
     {
         $featuredGalleries = $this->artistService
@@ -53,7 +67,15 @@ class ArtistController extends BaseController {
             ->with('featuredGalleries', $featuredGalleries);
     }
 
-    // Route: /artist/{artistName}
+    /**
+     * A single artists main display. Associated galleries along with their
+     * arts.
+     *
+     * @method get
+     * @route  /artist/featured
+     * @param  string   $userName
+     * @return View / Redirect
+     */
     public function getArtistByArtistName($userName)
     {
         $user = $this->userService
@@ -62,11 +84,22 @@ class ArtistController extends BaseController {
             return Redirect::route('artist.notFound', $userName);
         }
 
+        $art  = $this->artService
+            ->retrieveArtById($user->id);
+
         return View::make('artist::artist-display')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('art', $art);
     }
 
-    // Route /artist/{userName}/galleries
+    /**
+     * A page displaying all galleries belonging to an artist.
+     *
+     * @method get
+     * @route  /artist/{userName}/galleries
+     * @param  string   $userName
+     * @return View / Redirect
+     */
     public function getArtistGalleriesByArtistName($userName)
     {
         $user = $this->userService
@@ -83,7 +116,15 @@ class ArtistController extends BaseController {
             ->with('galleries', $galleries);
     }
 
-    // Route: /artist/{userName}/gallery/{galleryName}
+    /**
+     * Displaying a single gallery based on a artist name and gallery name
+     *
+     * @method get
+     * @route  /artist/{userName}/gallery/{galleryName}
+     * @param  string   $userName
+     * @param  string   $galleryName
+     * @return View / Redirect
+     */
     public function getArtistGalleryByGalleryName($userName, $galleryName)
     {
         $user = $this->userService
@@ -103,10 +144,19 @@ class ArtistController extends BaseController {
             ->with('gallery', $gallery);
     }
 
-    // Route: /artist/{userName}/not-found
+    /**
+     * An error page displayed when a URI contains an artist name that cannot
+     * be found in the system.
+     *
+     * @method get
+     * @route  /artist/{userName}/not-found
+     * @param  string   $userName
+     * @return View / Redirect
+     */
     public function getArtistNotFound($userName)
     {
-        // Check if the user actually does exist (broken urls?)
+        // Check if the user actually does exist (broken urls?). If so, redirect
+        // to artist page instead.
         $user = $this->userService
             ->retrieveUserByNameSlug($userName);
         if (empty($user) === false) {
@@ -117,4 +167,16 @@ class ArtistController extends BaseController {
             ->with('userName', $userName);
     }
 
+    /**
+     * An error page displayed when a URI is encountered that does not have a
+     * route specified for it.
+     *
+     * @method get
+     * @route  /artist/*
+     * @return View / Redirect
+     */
+    public function getCatchAll($path)
+    {
+        return 'You\'re looking for something that doesn\'t exist';
+    }
 }

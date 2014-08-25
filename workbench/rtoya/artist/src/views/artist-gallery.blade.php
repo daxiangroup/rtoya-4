@@ -4,13 +4,13 @@
 
 <div class="row">
     <div class="small-12">
-        <h2>{{ Lang::get('art::labels.artist-gallery') }} - {{ $gallery->name }}</h2>
+        <h2>{{ Lang::get('artist::labels.artist-gallery') }} - {{ $gallery->name }}</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="columns small-12 medium-3">
-        @include('art::navigation-main')
+        @include('artist::navigation-main')
     </div>
 
     <div class="columns small-12 medium-9">

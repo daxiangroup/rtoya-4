@@ -15,12 +15,6 @@ class ArtistService
     const DEFAULT_FEATURED_LIMIT_ARTISTS   = 5;
     const DEFAULT_FEATURED_LIMIT_GALLERIES = 5;
 
-    // public function retrieveArtsByUserId($user_id)
-    // {
-    //     return Art::where('user_id', '=', $user_id)
-    //         ->get();
-    // }
-
     public function retrieveFeaturedArts($limit = null)
     {
         if (is_null($limit) === true) {
