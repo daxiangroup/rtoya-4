@@ -39,17 +39,17 @@ class ArtistController extends BaseController {
         $featuredArtists = $this->artistService
             ->retrieveFeaturedArtists($this->userService);
 
-        return View::make('art::art-featured-artist')
+        return View::make('artist::artist-featured')
             ->with('featuredArtists', $featuredArtists);
     }
 
     // Route:: /artist/featured/galleries
     public function getFeaturedGalleries()
     {
-        $featuredGalleries = $this->artService
+        $featuredGalleries = $this->artistService
             ->retrieveFeaturedGalleries();
 
-        return View::make('art::art-featured-gallery')
+        return View::make('artist::artist-featured-galleries')
             ->with('featuredGalleries', $featuredGalleries);
     }
 

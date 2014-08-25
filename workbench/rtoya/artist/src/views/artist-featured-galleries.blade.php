@@ -18,10 +18,8 @@
             <div class="columns small-12 medium-6">
                 @foreach ($featuredGalleries as $featuredGallery)
                     {{
-                    HTML::linkRoute('art.gallery', $featuredGallery->name, array(
-                        $featuredGallery->user->id,
+                    HTML::linkRoute('artist.galleryByGalleryName', $featuredGallery->name, array(
                         $featuredGallery->user->name_slug,
-                        $featuredGallery->id,
                         $featuredGallery->name_slug
                     ))
                     }}<br>
