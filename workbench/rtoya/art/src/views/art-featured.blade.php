@@ -32,8 +32,7 @@
                 <h3>{{ Lang::get('art::labels.art.featured-artists') }}</h3>
                 @foreach ($featuredArtists as $featuredArtist)
                     {{
-                    HTML::linkRoute('art.artistByUserId', $featuredArtist->name, array(
-                        $featuredArtist->id,
+                    HTML::linkRoute('artist.byArtistName', $featuredArtist->name, array(
                         $featuredArtist->name_slug
                     ))
                     }}<br>
@@ -48,7 +47,7 @@
                 {{ HTML::linkRoute('art.featuredArt', Lang::get('art::labels.art.more-featured-arts')) }}
             </div>
             <div class="columns small-12 medium-6">
-                {{ HTML::linkRoute('art.featuredArtist', Lang::get('art::labels.art.more-featured-artists')) }}
+                {{ HTML::linkRoute('artist.featuredArtists', Lang::get('art::labels.art.more-featured-artists')) }}
             </div>
         </div>
 

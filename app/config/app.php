@@ -204,7 +204,7 @@ return array(
     'packages' => array(
         'art' => array(
             'prefix'     => 'art',
-            'controller' => 'Rtoya\Artist\ArtController',
+            'controller' => 'Rtoya\Art\ArtController',
         ),
         'artist' => array(
             'prefix'     => 'artist',
