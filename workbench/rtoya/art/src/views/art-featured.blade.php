@@ -56,10 +56,8 @@
                 <h3>{{ Lang::get('art::labels.art.featured-galleries') }}</h3>
                 @foreach ($featuredGalleries as $featuredGallery)
                     {{
-                    HTML::linkRoute('art.gallery', $featuredGallery->name, array(
-                        $featuredGallery->user->id,
+                    HTML::linkRoute('artist.galleryByGalleryName', $featuredGallery->name, array(
                         $featuredGallery->user->name_slug,
-                        $featuredGallery->id,
                         $featuredGallery->name_slug
                     ))
                     }}<br>
@@ -71,7 +69,7 @@
 
         <div class="row">
             <div class="columns small-12 medium-6">
-                {{ HTML::linkRoute('art.featuredGallery', Lang::get('art::labels.art.more-featured-galleries')) }}
+                {{ HTML::linkRoute('artist.featuredGalleries', Lang::get('art::labels.art.more-featured-galleries')) }}
             </div>
         </div>
 

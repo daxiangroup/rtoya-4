@@ -14,8 +14,7 @@
     </div>
 
     <div class="columns small-12 medium-9">
-        Artist: {{ HTML::linkRoute('art.galleriesUser', $artist->name, array(
-            $artist->id,
+        Artist: {{ HTML::linkRoute('artist.galleriesByArtistName', $artist->name, array(
             $artist->name_slug
         ))
         }}<p>
@@ -23,10 +22,8 @@
 
         Galleries:<br>
         @foreach ($art->galleries as $gallery)
-        &nbsp;&nbsp;&nbsp;&nbsp;{{ HTML::linkRoute('art.gallery', $gallery->name, array(
-            $gallery->user->id,
+        &nbsp;&nbsp;&nbsp;&nbsp;{{ HTML::linkRoute('artist.galleryByGalleryName', $gallery->name, array(
             $gallery->user->name_slug,
-            $gallery->id,
             $gallery->name_slug
         ))
         }}<br>
