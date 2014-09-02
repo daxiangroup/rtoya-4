@@ -210,6 +210,10 @@ return array(
             'prefix'     => 'artist',
             'controller' => 'Rtoya\Artist\ArtistController',
         ),
+        'signin' => array(
+            'prefix'     => 'signin',
+            'controller' => 'Rtoya\Signin\SigninController',
+        ),
     ),
 
 );

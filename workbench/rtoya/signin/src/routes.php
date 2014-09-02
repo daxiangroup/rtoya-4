@@ -1,24 +1,23 @@
 <?php
 
-Route::get('/signin', array(
-    'uses' => 'Rtoya\Signin\SigninController@getForm',
+$routePrefix = '/'.Config::get('app.packages.signin.prefix');
+$controller  = Config::get('app.packages.signin.controller').'@';
+
+Route::get($routePrefix, array(
+    'uses' => $controller.'getForm',
     'as'   => 'signin'));
 
-Route::post('/signin', array(
-    'uses' => 'Rtoya\Signin\SigninController@postSignin',
+Route::post($routePrefix, array(
+    'uses' => $controller.'postSignin',
     'as'   => 'signin.post'));
 
 Route::get('/forgot-password', array(
-    'uses' => 'Rtoya\Signin\SigninController@getForgotPassword',
+    'uses' => $controller.'getForgotPassword',
     'as'   => 'signin.forgotpassword'));
 
 Route::get('/signout', array(
-    'uses' => 'Rtoya\Signin\SigninController@getLogout',
+    'uses' => $controller.'getLogout',
     'as'   => 'signin.signout'));
-
-Route::get('/logout', array(
-    'uses' => 'Rtoya\Signin\SigninController@getLogout',
-    'as'   => 'signin.logout'));
 
 Route::get('/hash', function()
 {
